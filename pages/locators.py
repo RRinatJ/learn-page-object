@@ -15,6 +15,11 @@ class ProductPageLocators():
     PRICE_PRODUCT = (By.CSS_SELECTOR, ".product_main .price_color")
     MESSAGE_WITH_PRICE_PRODUCT = (By.CSS_SELECTOR, "#messages > div:nth-child(3) > .alertinner > p:nth-child(1) > strong")
 
-class BasePageLocators():
+class BasePageLocators():	
 	LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 	LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+class BasketPageLocators():
+	BASKET_LINK = (By.CSS_SELECTOR, "a[href*='basket']")
+	BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+	BASKET_EMPTY_TEXT = (By.CSS_SELECTOR, "#content_inner > p")

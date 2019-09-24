@@ -4,6 +4,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
+from .locators import BasketPageLocators
 
 import math
 
@@ -20,8 +21,20 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasketPageLocators.BASKET_LINK)
+        link.click()
+
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def test_guest_cant_see_basket_items(self):
+        #Проверяем, что нет товаров в корзине
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), "Basket items is presented, but should not be"
+
+    def test_guest_see_basket_empty_text(self):
+        #Проверяем, что есть сообщение о пустой корзине
+        assert self.is_element_present(*BasketPageLocators.BASKET_EMPTY_TEXT), "Basket empty text is not presented"
             
     def is_element_present(self, how, what):
         try:
