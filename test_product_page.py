@@ -13,8 +13,7 @@ class TestLoginFromProductPage():
         self.login.open()
         self.email = str(time.time()) + "@fakemail.org"
         self.password = "lkncs43897JSDGB"        
-        self.login.register_new_user(self.email, self.password)
-        time.sleep(5) 
+        self.login.register_new_user(self.email, self.password)        
         self.login.should_be_authorized_user()       
 
     def test_user_cant_see_success_message(self, browser):        
