@@ -17,6 +17,10 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
+
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
@@ -35,6 +39,10 @@ class BasePage():
     def test_guest_see_basket_empty_text(self):
         #Проверяем, что есть сообщение о пустой корзине
         assert self.is_element_present(*BasketPageLocators.BASKET_EMPTY_TEXT), "Basket empty text is not presented"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
             
     def is_element_present(self, how, what):
         try:

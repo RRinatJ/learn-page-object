@@ -36,3 +36,13 @@ class ProductPage(BasePage):
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
         #Проверяем, что нет сообщения об успехе с помощью
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def test_user_cant_see_success_message(self):
+        #Проверяем, что нет сообщения об успехе с помощью
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def test_user_can_add_product_to_basket(self):
+        self.should_be_add_to_cart_button()
+        self.click_add_to_cart_button()     
+        self.check_name_of_product() 
+        self.check_price_of_product()         
