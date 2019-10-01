@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-import time
 
 class ProductPage(BasePage): 
     def test_add_to_cart(self):                        
